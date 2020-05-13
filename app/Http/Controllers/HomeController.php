@@ -23,13 +23,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('welcome');
     }
 
     public function adminHome()
     {
         $user = auth()->user();
-        dump($user);
+        // dump($user);
         return view('adminHome', ['user'=>$user]);
     }
 }
