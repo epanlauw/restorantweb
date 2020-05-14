@@ -86,7 +86,7 @@ class RegisterController extends Controller
             'no_tlp' => $data['no_tlp'],
             'bod' => $data['bod'],
             'is_admin' => 0,
-            'image' => $file_path,
+            'image' => $file_name,
         ]);
     }
 }

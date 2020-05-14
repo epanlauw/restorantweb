@@ -24,7 +24,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{URL::to('admin')}}" class="nav-link">
+            <a href="{{URL::to('admin/makanans')}}" class="nav-link">
               <i class="nav-icon fa fa-book">
                 <p>
                   Makanan

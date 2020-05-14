@@ -14,7 +14,8 @@ class MakanansController extends Controller
      */
     public function index()
     {
-        //
+        $makanans =  Makanan::all();
+        return view('admin.makanans.index', ['makanans' => $makanans]);
     }
 
     /**
@@ -24,7 +25,7 @@ class MakanansController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.makanans.create');
     }
 
     /**
@@ -35,7 +36,22 @@ class MakanansController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+        ]);
+        $file_extention = $request->gambar->getClientOriginalExtension();
+        $file_name = time().rand(100000,1001238912).'image_makanan.'.$file_extention;
+        $request->gambar->move(public_path().'/images/makanan',$file_name);
+        Makanan::create([
+            'nama' => $request->nama,
+            'stock' => $request->stock,
+            'harga' => $request->harga,
+            'supplier_id' => $request->vendor,
+            'category_id' => $request->jenis,
+            'image' => $file_name,
+            'deskripsi' => $request->deskripsi,
+        ]);
+        return redirect('/admin/makanans')->with('status','Berhasil Ditambahkan');
     }
 
     /**

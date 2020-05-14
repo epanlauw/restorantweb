@@ -21,6 +21,8 @@ class CreateMakanansTable extends Migration
             $table->string('nama');
             $table->integer('harga');
             $table->integer('stock');
+            $table->string('image');
+            $table->text('Deskripsi');
             $table->timestamps();
         });
         Schema::table('makanans', function (Blueprint $table) {
