@@ -96,6 +96,8 @@ class MakanansController extends Controller
      */
     public function destroy(Makanan $makanan)
     {
-        //
+        Makanan::destroy($makanan->id);
+        return redirect('/admin/makanans')->with('status','Berhasil Dihapus');
+        // return $makanan;
     }
 }

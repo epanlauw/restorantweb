@@ -41,7 +41,7 @@
                                     </td>
                                     <td>{{$makanan->supplier_id}}</td>
                                     <td>
-                                        <form action="{{$makanan->id}}" method="post" class="d-inline">
+                                        <form action="{{"makanans/".$makanan->id}}" method="post" class="d-inline">
                                         @method('delete')
                                         @csrf
                                         <div class="btn-group">
