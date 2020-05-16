@@ -21,7 +21,7 @@
                                 <input placeholder="Nama Depan" id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="fist_name" autofocus>
 
                                 @error('first_name')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -35,7 +35,7 @@
                                 <input placeholder="Nama Belakang" id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" autocomplete="last_name" autofocus>
 
                                 @error('last_name')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -49,7 +49,7 @@
                                 <input placeholder="Email Address" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -63,7 +63,7 @@
                                 <input placeholder="Password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -85,7 +85,7 @@
                                 <input placeholder="Alamat" id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') }}" required autocomplete="alamat" autofocus>
 
                                 @error('alamat')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -99,7 +99,7 @@
                                 <input placeholder="Kota" id="kota" type="text" class="form-control @error('kota') is-invalid @enderror" name="kota" value="{{ old('kota') }}" required autocomplete="kota" autofocus>
 
                                 @error('kota')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -113,7 +113,7 @@
                                 <input placeholder="Nomor Telpon" id="no_tlp" type="text" class="form-control @error('no_tlp') is-invalid @enderror" name="no_tlp" value="{{ old('no_tlp') }}" required autocomplete="no_tlp" autofocus>
 
                                 @error('no_tlp')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -127,7 +127,7 @@
                                 <input id="bod" type="date" class="form-control @error('bod') is-invalid @enderror" name="bod" value="{{ old('bod') }}" required autocomplete="kota" autofocus>
 
                                 @error('bod')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -141,13 +141,13 @@
                                 <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" required autocomplete="image" autofocus>
 
                                 @error('image')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
-                        
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
