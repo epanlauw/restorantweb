@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMakanansTable extends Migration
+class CreateMinumansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMakanansTable extends Migration
      */
     public function up()
     {
-        Schema::create('makanans', function (Blueprint $table) {
+        Schema::create('minumans', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->id();
             $table->bigInteger('supplier_id')->index()->unsigned();
@@ -25,7 +25,7 @@ class CreateMakanansTable extends Migration
             $table->text('deskripsi');
             $table->timestamps();
         });
-        Schema::table('makanans', function (Blueprint $table) {
+        Schema::table('minumans', function (Blueprint $table) {
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
@@ -38,6 +38,6 @@ class CreateMakanansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('makanans');
+        Schema::dropIfExists('minumans');
     }
 }

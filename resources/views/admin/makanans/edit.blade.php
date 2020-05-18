@@ -1,5 +1,7 @@
 @extends('admin.admin')
 
+@section('subtitle','Edit Makanan')
+
 @section('content')
 <div class="row">
     <div class="col-12">

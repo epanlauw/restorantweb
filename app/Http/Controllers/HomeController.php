@@ -26,10 +26,10 @@ class HomeController extends Controller
         return view('welcome');
     }
 
-    public function adminHome()
-    {
-        $user = auth()->user();
-        // dump($user);
-        return view('adminHome', ['user'=>$user]);
-    }
+    // public function adminHome()
+    // {
+    //     $user = auth()->user();
+    //     // dump($user);
+    //     return view('adminHome', ['user'=>$user]);
+    // }
 }
