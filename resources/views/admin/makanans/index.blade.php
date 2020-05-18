@@ -1,4 +1,7 @@
 @extends('admin/admin')
+
+@section('subtitle','Daftar Makanan')
+
 @section('content')
 <div class="row">
     <div class="col-12">
@@ -12,7 +15,7 @@
                     </a>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body table-responsive">
                 <div class="row">
                     <div class="col-md-12">
                         <table class="table table-bordered table-hover">
@@ -35,18 +38,18 @@
                                     <td>{{$makanan->nama}}</td>
                                     <td>{{$makanan->stock}}</td>
                                     <td>{{$makanan->harga}}</td>
-                                    <td>{{$makanan->category_id}}</td>
+                                    <td>{{$makanan->category->nama}}</td>
+                                    <td>{{$makanan->supplier->nama}}</td>
                                     <td>
-                                        <img src="{{ ('../images/makanan/'.$makanan->image) }}" width="150">
+                                        <center><img src="{{ ('../images/makanan/'.$makanan->image) }}" width="200"></center>
                                     </td>
-                                    <td>{{$makanan->supplier_id}}</td>
                                     <td>
                                         <form action="{{"makanans/".$makanan->id}}" method="post" class="d-inline">
                                         @method('delete')
                                         @csrf
                                         <div class="btn-group">
-                                            <a class="btn btn-info" href=""><i class="fa fa-edit"></i></a>
-                                            <a class="btn btn-success" href=""><i class="fa fa-eye"></i></a>
+                                            <a class="btn btn-info" href="{{url('/admin/makanans/'.$makanan->id).'/edit'}}"><i class="fa fa-edit"></i></a>
+                                            <a class="btn btn-success" href="{{url('/admin/makanans/'.$makanan->id)}}"><i class="fa fa-eye"></i></a>
                                             <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                         </div>
                                         </form>

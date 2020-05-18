@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Makanan;
+use App\Supplier;
+use App\Category;
 use Illuminate\Http\Request;
 
 class MakanansController extends Controller
@@ -25,7 +27,12 @@ class MakanansController extends Controller
      */
     public function create()
     {
-        return view('admin.makanans.create');
+        $categories =  Category::all();
+        $suppliers = Supplier::all();
+        return view('admin.makanans.create', [
+          'categories' => $categories,
+          'suppliers' => $suppliers,
+        ]);
     }
 
     /**
@@ -68,7 +75,7 @@ class MakanansController extends Controller
      */
     public function show(Makanan $makanan)
     {
-        //
+        return view('admin.makanans.show',['makanan'=>$makanan]);
     }
 
     /**
@@ -79,7 +86,13 @@ class MakanansController extends Controller
      */
     public function edit(Makanan $makanan)
     {
-        //
+      $categories =  Category::all();
+      $suppliers = Supplier::all();
+      return view('admin.makanans.edit', [
+        'categories' => $categories,
+        'suppliers' => $suppliers,
+        'makanan' => $makanan
+      ]);
     }
 
     /**
@@ -91,7 +104,32 @@ class MakanansController extends Controller
      */
     public function update(Request $request, Makanan $makanan)
     {
-        //
+      if($request->hasFile('gambar')) {
+        $file_extention = $request->gambar->getClientOriginalExtension();
+        $file_name = time().rand(100000,1001238912).'image_makanan.'.$file_extention;
+        $request->gambar->move(public_path().'/images/makanan',$file_name);
+        Makanan::where('id', $makanan->id)
+              ->update([
+                'nama' => $request->nama,
+                'stock' => $request->stock,
+                'harga' => $request->harga,
+                'supplier_id' => $request->vendor,
+                'category_id' => $request->jenis,
+                'image' => $file_name,
+                'deskripsi' => $request->deskripsi,
+              ]);
+      }else{
+        Makanan::where('id', $makanan->id)
+              ->update([
+                'nama' => $request->nama,
+                'stock' => $request->stock,
+                'harga' => $request->harga,
+                'supplier_id' => $request->vendor,
+                'category_id' => $request->jenis,
+                'deskripsi' => $request->deskripsi,
+              ]);
+      }
+      return redirect('/admin/makanans')->with('status','Berhasil Diubah');
     }
 
     /**
