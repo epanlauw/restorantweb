@@ -23,13 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin', 'AdminController@index')->name('admin.home')->middleware('is_admin');
 
-//makanan
-// Route::get('/admin/makanans', 'MakanansController@index');
-// Route::get('/admin/makanans/create', 'MakanansController@create');
-// Route::get('/students/{student}', 'StudentsController@show');
-// Route::post('/admin/makanans', 'MakanansController@store');
-// Route::delete('/students/{student}', 'StudentsController@destroy');
-// Route::get('/students/{student}/edit', 'StudentsController@edit');
-// Route::patch('/students/{student}', 'StudentsController@update');
-
-Route::resource('/admin/makanans', 'MakanansController');
+Route::group(['middleware' => ['auth', 'is_admin']], function() {
+  Route::resource('/admin/makanans', 'MakanansController');
+  Route::resource('/admin/minumans', 'MinumansController');
+});

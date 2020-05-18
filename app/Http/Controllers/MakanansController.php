@@ -105,6 +105,15 @@ class MakanansController extends Controller
     public function update(Request $request, Makanan $makanan)
     {
       if($request->hasFile('gambar')) {
+        $request->validate([
+            'nama' => 'required',
+            'stock' => 'required',
+            'harga' => 'required',
+            'jenis' => 'required',
+            'vendor' => 'required',
+            'gambar' => 'required',
+            'deskripsi' => 'required',
+        ]);
         $file_extention = $request->gambar->getClientOriginalExtension();
         $file_name = time().rand(100000,1001238912).'image_makanan.'.$file_extention;
         $request->gambar->move(public_path().'/images/makanan',$file_name);
@@ -119,6 +128,14 @@ class MakanansController extends Controller
                 'deskripsi' => $request->deskripsi,
               ]);
       }else{
+        $request->validate([
+            'nama' => 'required',
+            'stock' => 'required',
+            'harga' => 'required',
+            'jenis' => 'required',
+            'vendor' => 'required',
+            'deskripsi' => 'required',
+        ]);
         Makanan::where('id', $makanan->id)
               ->update([
                 'nama' => $request->nama,
