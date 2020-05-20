@@ -3,5 +3,5 @@
 @section('title', 'Restore Toko Kita Semua')
 
 @section('content')
-@include('layouts.home');
+@include('layouts.home')
 @endsection

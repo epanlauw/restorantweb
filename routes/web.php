@@ -19,11 +19,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/admin', 'AdminController@index')->name('admin.home')->middleware('is_admin');
+Route::get('/home', 'HomeController@userHome')->name('home');
 
 Route::group(['middleware' => ['auth', 'is_admin']], function() {
+  Route::get('/admin', 'AdminController@index')->name('admin.home');
   Route::resource('/admin/makanans', 'MakanansController');
   Route::resource('/admin/minumans', 'MinumansController');
   Route::get('/admin/transaksis', 'TransaksisController@index');
