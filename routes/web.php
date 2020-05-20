@@ -26,4 +26,5 @@ Route::get('/admin', 'AdminController@index')->name('admin.home')->middleware('i
 Route::group(['middleware' => ['auth', 'is_admin']], function() {
   Route::resource('/admin/makanans', 'MakanansController');
   Route::resource('/admin/minumans', 'MinumansController');
+  Route::get('/admin/transaksis', 'TransaksisController@index');
 });

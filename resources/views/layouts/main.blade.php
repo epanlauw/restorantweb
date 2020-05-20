@@ -11,12 +11,12 @@
     <link href={{asset('css/prettyPhoto.css')}} rel="stylesheet">
     <link href={{asset('css/price-range.css')}} rel="stylesheet">
     <link href={{asset('css/animate.css')}} rel="stylesheet">
-	<link href={{asset('css/main.css')}} rel="stylesheet">
-	<link href={{asset('css/responsive.css')}} rel="stylesheet">
+  	<link href={{asset('css/main.css')}} rel="stylesheet">
+  	<link href={{asset('css/responsive.css')}} rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
-    <![endif]-->       
+    <![endif]-->
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href={{asset('images/ico/apple-touch-icon-144-precomposed.png')}}>
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href={{asset('images/ico/apple-touch-icon-114-precomposed.png')}}>
@@ -51,7 +51,7 @@
 				</div>
 			</div>
 		</div><!--/header_top-->
-		
+
 		<div class="header-middle"><!--header-middle-->
 			<div class="container">
 				<div class="row">
@@ -59,17 +59,18 @@
 						<div class="logo pull-left">
 							<a href="{{url('/')}}"><img src="https://cdn4.iconfinder.com/data/icons/animals-45/755/Giraffe-512.png" width="70" alt="" /></a>
 						</div>
-						
+
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                @guest
+                @else
+                  	<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+                @endguest
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								 <!-- Authentication Links -->
-								 @guest
+								@guest
 								<li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> Login</a></li>
 								<li>
 									@if (Route::has('register'))
@@ -77,31 +78,31 @@
 									@endif
 								</li>
 								@else
-                            <li class="nav-item dropdown">
-									<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-										{{ Auth::user()->name }} <span class="caret"></span>
-									</a>
+                  <li class="nav-item dropdown">
+  									<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+  										{{ Auth::user()->name }} <span class="caret"></span>
+  									</a>
 
-									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-										<a class="dropdown-item" href="{{ route('logout') }}"
-										onclick="event.preventDefault();
-														document.getElementById('logout-form').submit();">
-											{{ __('Logout') }}
-										</a>
+  									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+  										<a class="dropdown-item" href="{{ route('logout') }}"
+  										onclick="event.preventDefault();
+  														document.getElementById('logout-form').submit();">
+                            <i class="fa fa-user">{{ __('Logout') }}</i>
+  										</a>
 
-										<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-											@csrf
-										</form>
-									</div>
-                           		</li>
-                        	@endguest
+  										<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+  											@csrf
+  										</form>
+  									</div>
+                  </li>
+                @endguest
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div><!--/header-middle-->
-	
+
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
 				<div class="row">
@@ -117,22 +118,12 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html" class="active">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> 
-                                    </ul>
-                                </li> 
-								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
-										<li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-                                </li> 
-								<li><a href="404.html">404</a></li>
+								<li class="dropdown"><a href="#">Produk<i class="fa fa-angle-down"></i></a>
+                  <ul role="menu" class="sub-menu">
+                      <li><a href="#">Makanan</a></li>
+  										<li><a href="#">Minuman</a></li>
+                    </ul>
+                </li>
 								<li><a href="contact-us.html">Contact</a></li>
 							</ul>
 						</div>
@@ -146,9 +137,9 @@
 			</div>
 		</div><!--/header-bottom-->
 	</header><!--/header-->
-	
+
     @yield('content')
-    
+
 	<footer id="footer"><!--Footer-->
 		<div class="footer-top">
 			<div class="container">
@@ -174,7 +165,7 @@
 								<h2>24 DEC 2014</h2>
 							</div>
 						</div>
-						
+
 						<div class="col-sm-3">
 							<div class="video-gallery text-center">
 								<a href="#">
@@ -189,7 +180,7 @@
 								<h2>24 DEC 2014</h2>
 							</div>
 						</div>
-						
+
 						<div class="col-sm-3">
 							<div class="video-gallery text-center">
 								<a href="#">
@@ -204,7 +195,7 @@
 								<h2>24 DEC 2014</h2>
 							</div>
 						</div>
-						
+
 						<div class="col-sm-3">
 							<div class="video-gallery text-center">
 								<a href="#">
@@ -229,7 +220,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="footer-widget">
 			<div class="container">
 				<div class="row">
@@ -291,11 +282,11 @@
 							</form>
 						</div>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
@@ -304,16 +295,16 @@
 				</div>
 			</div>
 		</div>
-		
-	</footer><!--/Footer-->
-	
 
-  
-    <script src={{asset('js/jquery.js')}}></script>
-	<script src={{asset('js/bootstrap.min.js')}}></script>
-	<script src={{asset('js/jquery.scrollUp.min.js')}}></script>
-	<script src={{asset('js/price-range.js')}}></script>
-    <script src={{asset('js/jquery.prettyPhoto.js')}}></script>
-    <script src={{asset('js/main.js')}}></script>
+	</footer><!--/Footer-->
+
+
+
+  <script src={{asset('js/jquery.js')}}></script>
+  <script src={{asset('js/bootstrap.min.js')}}></script>
+  <script src={{asset('js/jquery.scrollUp.min.js')}}></script>
+  <script src={{asset('js/price-range.js')}}></script>
+  <script src={{asset('js/jquery.prettyPhotos.js')}}></script>
+  <script src={{asset('js/main.js')}}></script>
 </body>
 </html>

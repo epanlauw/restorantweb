@@ -6,10 +6,16 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="{{url('/admin')}}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="{{url('/admin/makanans')}}" class="nav-link">Makanan</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{url('/admin/minumans')}}" class="nav-link">Minuman</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{url('/admin/transaksis')}}" class="nav-link">Transaksi</a>
       </li>
     </ul>
 
