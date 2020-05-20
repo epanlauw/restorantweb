@@ -6,13 +6,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>@yield('title')</title>
-    <link href={{asset('css/bootstrap.min.css')}} rel="stylesheet">
-    <link href={{asset('css/font-awesome.min.css')}} rel="stylesheet">
-    <link href={{asset('css/prettyPhoto.css')}} rel="stylesheet">
-    <link href={{asset('css/price-range.css')}} rel="stylesheet">
-    <link href={{asset('css/animate.css')}} rel="stylesheet">
-  	<link href={{asset('css/main.css')}} rel="stylesheet">
-  	<link href={{asset('css/responsive.css')}} rel="stylesheet">
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/prettyPhoto.css')}}" rel="stylesheet">
+    <link href="{{asset('css/price-range.css')}}" rel="stylesheet">
+    <link href="{{asset('css/animate.css')}}" rel="stylesheet">
+  	<link href="{{asset('css/main.css')}}" rel="stylesheet">
+  	<link href="{{asset('css/responsive.css')}}" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -66,7 +66,7 @@
 							<ul class="nav navbar-nav">
                 @guest
                 @else
-                  	<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+                  	<li><a href="#"><i class="fa fa-user"></i> {{auth()->user()->first_name . ' '. auth()->user()->last_name}}</a></li>
                 @endguest
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								 <!-- Authentication Links -->
@@ -84,11 +84,9 @@
   									</a>
 
   									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-  										<a class="dropdown-item" href="{{ route('logout') }}"
-  										onclick="event.preventDefault();
-  														document.getElementById('logout-form').submit();">
+                      <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="fa fa-user">{{ __('Logout') }}</i>
-  										</a>
+                      </a>
 
   										<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
   											@csrf
@@ -146,7 +144,7 @@
 				<div class="row">
 					<div class="col-sm-2">
 						<div class="companyinfo">
-							<h2><span>e</span>-shopper</h2>
+							<h2><span>Restore</span></h2>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
 						</div>
 					</div>
@@ -290,7 +288,7 @@
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
-					<p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
+					<p class="pull-left">Copyright © 2020 Inc. All rights reserved.</p>
 					<p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
 				</div>
 			</div>
@@ -300,11 +298,12 @@
 
 
 
-  <script src={{asset('js/jquery.js')}}></script>
-  <script src={{asset('js/bootstrap.min.js')}}></script>
-  <script src={{asset('js/jquery.scrollUp.min.js')}}></script>
-  <script src={{asset('js/price-range.js')}}></script>
-  <script src={{asset('js/jquery.prettyPhotos.js')}}></script>
-  <script src={{asset('js/main.js')}}></script>
+  <script src="{{asset('js/jquery.js')}}"></script>
+  <script src="{{asset('js/bootstrap.min.js')}}"></script>
+  <script src="{{asset('js/jquery.scrollUp.min.js')}}"></script>
+  <script src="{{asset('js/price-range.js')}}"></script>
+  <script src="{{asset('js/jquery.prettyPhotos.js')}}"></script>
+  <script src="{{asset('js/main.js')}}"></script>
+
 </body>
 </html>
