@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Makanan;
+use App\Minuman;
 
 class HomeController extends Controller
 {
@@ -13,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+
     }
 
     /**
@@ -23,11 +25,26 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $makanans = Makanan::all();
+        $minumans = Minuman::all();
+        return view('welcome',[
+          'makanans' => $makanans,
+          'minumans' => $minumans
+        ]);
     }
 
     public function userHome()
     {
-        return view('user.home');
+        $makanans = Makanan::all();
+        $minumans = Minuman::all();
+        return view('user.home',[
+          'makanans' => $makanans,
+          'minumans' => $minumans
+        ]);
+    }
+
+    public function makanan()
+    {
+      return view('user.makanan');
     }
 }
