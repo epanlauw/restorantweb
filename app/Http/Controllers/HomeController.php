@@ -47,4 +47,14 @@ class HomeController extends Controller
     {
       return view('user.makanan');
     }
+
+    public function showMakanan(Makanan $makanan)
+    {
+        return view('user.detail_makanan',['makanan'=>$makanan]);
+    }
+
+    public function showMinuman(Minuman $minuman)
+    {
+        return view('user.detail_minuman',['minuman'=>$minuman]);
+    }
 }

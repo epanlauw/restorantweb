@@ -90,13 +90,13 @@
                                             <img src="{{asset('images/makanan/'.$makanan->image)}}" alt="" />
                                             <h2>Rp {{$makanan->harga}},-</h2>
                                             <p>{{$makanan->nama}}</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <a href="{{url('/makanan/'.$makanan->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>View Details</a>
                                         </div>
                                         <div class="product-overlay">
                                             <div class="overlay-content">
                                                 <h2>Rp {{$makanan->harga}},-</h2>
                                                 <p>{{$makanan->nama}}</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>View Details</a>
+                                                <a href="{{url('/makanan/'.$makanan->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>View Details</a>
                                             </div>
                                         </div>
                                 </div>
@@ -121,19 +121,20 @@
                                             <img src="{{asset('images/minuman/'.$minuman->image)}}" alt="" />
                                             <h2>Rp {{$minuman->harga}},-</h2>
                                             <p>{{$minuman->nama}}</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <a href="{{url('/minuman/'.$minuman->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>View Details</a>
                                         </div>
                                         <div class="product-overlay">
                                             <div class="overlay-content">
                                                 <h2>Rp {{$minuman->harga}},-</h2>
                                                 <p>{{$minuman->nama}}</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>View Details</a>
+                                                <a href="{{url('/minuman/'.$minuman->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>View Details</a>
                                             </div>
                                         </div>
                                 </div>
                                 <div class="choose">
                                     <ul class="nav nav-pills nav-justified">
-                                        <li><a href="#"><i class="fa fa-eye"></i>View Details</a></li>
+                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -162,7 +163,7 @@
                                                 <img src="{{asset('images/makanan/'.$makanan->image)}}" alt="" />
                                                 <h2>Rp {{$makanan->harga}},-</h2>
                                                 <p>{{$makanan->nama}}</p>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>View Details</a>
+                                                <a href="{{url('/makanan/'.$makanan->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>View Details</a>
                                             </div>
                                         </div>
                                     </div>

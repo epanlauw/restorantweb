@@ -27,5 +27,7 @@ Route::group(['middleware' => ['auth', 'is_admin']], function() {
 
 Route::group(['middleware' => ['auth', 'is_user']], function() {
   Route::get('/home', 'HomeController@userHome')->name('home');
-  Route::get('/makanan','HomeController@makanan');
+  Route::get('/makanans','HomeController@makanan');
+  Route::get('/makanan/{makanan}', 'HomeController@showMakanan');
+  Route::get('/minuman/{minuman}', 'HomeController@showMinuman');
 });
