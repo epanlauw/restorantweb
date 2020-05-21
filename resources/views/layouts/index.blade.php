@@ -181,7 +181,7 @@
                 													<img src="{{asset('images/minuman/'.$minuman->image)}}" alt="" />
                 													<h2>Rp {{$minuman->harga}},-</h2>
                 													<p>{{$minuman->nama}}</p>
-                													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>View Details</a>
+                													<a href="{{url('/minuman/'.$minuman->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>View Details</a>
                 												</div>
 
                 											</div>

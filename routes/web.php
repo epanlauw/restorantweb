@@ -30,4 +30,5 @@ Route::group(['middleware' => ['auth', 'is_user']], function() {
   Route::get('/makanans','HomeController@makanan');
   Route::get('/makanan/{makanan}', 'HomeController@showMakanan');
   Route::get('/minuman/{minuman}', 'HomeController@showMinuman');
+  Route::get('/add-to-cart/{makanan}','CartController@addMakanan')->name('cart.add');
 });

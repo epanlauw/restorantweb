@@ -37,10 +37,10 @@
 								<img src="images/product-details/rating.png" alt="" />
 								<span>
 									<span>Rp {{$makanan->harga}},-</span>
-									<button type="button" class="btn btn-default cart">
+									<a type="button" href="{{route('cart.add',$makanan->id)}}" class="btn btn-default cart">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
-									</button>
+									</a>
 								</span>
 								<p><b>Stock: </b>{{$makanan->stock}}</p>
 								<p><b>Category: </b>{{$makanan->category->nama}}</p>
@@ -70,7 +70,7 @@
 							</div>
 						</div>
 					</div><!--/category-tab-->
-					<a href="{{url('home')}}" class="btn add-to-cart"><i class="fa fa-caret-left"></i>Back</a>
+					<a type="button" href="{{url('home')}}" class="btn add-to-cart"><i class="fa fa-caret-left"></i>Back</a>
 				</div>
 			</div>
 		</div>
