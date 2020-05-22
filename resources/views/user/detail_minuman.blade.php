@@ -37,10 +37,10 @@
 								<img src="images/product-details/rating.png" alt="" />
 								<span>
 									<span>Rp {{$minuman->harga}},-</span>
-									<button type="button" class="btn btn-fefault cart">
+									<a type="button" href="{{route('add.cart',$minuman->id)}}" class="btn btn-default cart">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
-									</button>
+									</a>
 								</span>
 								<p><b>Stock: </b>{{$minuman->stock}}</p>
 								<p><b>Category: </b>{{$minuman->category->nama}}</p>

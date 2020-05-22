@@ -32,7 +32,7 @@
 					<div class="col-sm-6">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
-								<li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
+								<li><a href="#"><i class="fa fa-phone"></i> +62 95 01 88 821</a></li>
 								<li><a href="#"><i class="fa fa-envelope"></i> info@restore.com</a></li>
 							</ul>
 						</div>
@@ -67,8 +67,8 @@
                 @guest
                 @else
                   	<li><a href="#"><i class="fa fa-user"></i> {{auth()->user()->first_name . ' '. auth()->user()->last_name}}</a></li>
+                    <li><a href="{{url('/cart')}}"><i class="fa fa-shopping-cart"></i> Cart <div class="badge btn-danger">{{Cart::session(auth()->id())->getTotalQuantity()}}</div></a></li>
                 @endguest
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								 <!-- Authentication Links -->
 								@guest
 								<li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> Login</a></li>
@@ -302,8 +302,7 @@
   <script src="{{asset('js/bootstrap.min.js')}}"></script>
   <script src="{{asset('js/jquery.scrollUp.min.js')}}"></script>
   <script src="{{asset('js/price-range.js')}}"></script>
-  <script src="{{asset('js/jquery.prettyPhotos.js')}}"></script>
+  {{-- <script src="{{asset('js/jquery.prettyPhotos.js')}}"></script> --}}
   <script src="{{asset('js/main.js')}}"></script>
-
 </body>
 </html>

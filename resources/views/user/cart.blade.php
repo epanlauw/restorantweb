@@ -15,8 +15,9 @@
 				<table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
-							<td class="image">Item</td>
-							<td class="description"></td>
+							<td>#</td>
+							<td class="image">Image</td>
+							<td class="description">Name</td>
 							<td class="price">Price</td>
 							<td class="quantity">Quantity</td>
 							<td class="total">Total</td>
@@ -24,82 +25,65 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/cart/one.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/cart/two.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/cart/three.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
+						@foreach ($cartItems as $item)
+							@if (substr($item->id, 0, 2) == 'MA')
+								<tr>
+									<td>{{$loop->iteration}}</td>
+									<td class="cart_product">
+										<a href=""><img src="{{asset('images/makanan/'.$item->associatedModel->image)}}" alt="" width="200"></a>
+									</td>
+									<td class="cart_description">
+										<h4>{{$item->name}}</h4>
+									</td>
+									<td class="cart_price">
+										<p>Rp {{$item->price}},-</p>
+									</td>
+									<td class="cart_quantity">
+										<div class="cart_quantity_button">
+											<form action="{{route('cart.update', $item->id)}}">
+												<button class="btn add"> + </button>
+												<input class="input-text" type="text" name="quantity" value="{{$item->quantity}}" autocomplete="off" size="2">
+												<button class="btn sub"> - </button>
+											</form>
+										</div>
+									</td>
+									<td class="cart_total">
+										<p class="cart_total_price">Rp {{Cart::session(auth()->id())->get($item->id)->getPriceSum()}},-</p>
+									</td>
+									<td class="cart_delete">
+										<a class="cart_quantity_delete" href="{{route('cart.destroy',$item->id)}}"><i class="fa fa-times"></i></a>
+									</td>
+								</tr>
+							@else
+								<tr>
+									<td>{{$loop->iteration}}</td>
+									<td class="cart_product">
+										<a href=""><img src="{{asset('images/minuman/'.$item->associatedModel->image)}}" alt="" width="200"></a>
+									</td>
+									<td class="cart_description">
+										<h4>{{$item->name}}</h4>
+									</td>
+									<td class="cart_price">
+										<p>Rp {{$item->price}},-</p>
+									</td>
+									<td class="cart_quantity">
+										<div class="cart_quantity_button">
+											<form action="{{route('cart.update', $item->id)}}">
+												<button class="btn add"> + </button>
+												<input class="input-text" type="text" name="quantity" value="{{$item->quantity}}" autocomplete="off" size="2">
+												<button class="btn sub"> - </button>
+											</form>
+										</div>
+									</td>
+									<td class="cart_total">
+										<p class="cart_total_price">Rp {{Cart::session(auth()->id())->get($item->id)->getPriceSum()}},-</p>
+									</td>
+									<td class="cart_delete">
+										<a class="cart_quantity_delete" href="{{route('cart.destroy',$item->id)}}"><i class="fa fa-times"></i></a>
+									</td>
+								</tr>
+							@endif
+						@endforeach
 					</tbody>
 				</table>
 			</div>
@@ -182,4 +166,21 @@
 			</div>
 		</div>
 	</section><!--/#do_action-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.add').click(function() {
+		   var $input = $(this).next();
+		   var currentValue = parseInt($input.val());
+		   $input.val(currentValue + 1);
+		});
+
+		$('.sub').click(function() {
+		   var $input = $(this).prev();
+		   var currentValue = parseInt($input.val());
+			 if(currentValue > 0)
+		   	$input.val(currentValue - 1);
+		});
+	 });
+</script>
 @endsection

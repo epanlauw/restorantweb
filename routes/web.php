@@ -31,4 +31,8 @@ Route::group(['middleware' => ['auth', 'is_user']], function() {
   Route::get('/makanan/{makanan}', 'HomeController@showMakanan');
   Route::get('/minuman/{minuman}', 'HomeController@showMinuman');
   Route::get('/add-to-cart/{makanan}','CartController@addMakanan')->name('cart.add');
+  Route::get('/add-cart/{minuman}','CartController@addMinuman')->name('add.cart');
+  Route::get('/cart','CartController@index')->name('cart.index');
+  Route::get('/cart/destroy/{itemId}','CartController@destroy')->name('cart.destroy');
+  Route::get('/cart/update/{itemId}','CartController@update')->name('cart.update');
 });
