@@ -45,7 +45,8 @@ class HomeController extends Controller
 
     public function makanan()
     {
-      return view('user.makanan');
+      $makanans = Makanan::paginate(6);
+      return view('user.makanans',['makanans' => $makanans]);
     }
 
     public function showMakanan(Makanan $makanan)

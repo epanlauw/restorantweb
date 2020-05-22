@@ -118,7 +118,7 @@
 								<li><a href="{{URL::to('home')}}" class="active">Home</a></li>
 								<li class="dropdown"><a href="#">Produk<i class="fa fa-angle-down"></i></a>
                   <ul role="menu" class="sub-menu">
-                      <li><a href="{{URL::to('makanan')}}">Makanan</a></li>
+                      <li><a href="{{URL::to('makanans')}}">Makanan</a></li>
   										<li><a href="#">Minuman</a></li>
                     </ul>
                 </li>

@@ -7,10 +7,17 @@
 			<div class="container">
 				<div class="breadcrumbs">
 					<ol class="breadcrumb">
-						<li><a href="#">Home</a></li>
+						<li><a href="{{URL::to('home')}}">Home</a></li>
 						<li class="active">Shopping Cart</li>
 					</ol>
 				</div>
+				@if($errors->any())
+				<div class="alert alert-danger">
+	        <ul>
+	            <li>{{$errors->first()}}</li>
+	        </ul>
+    		</div>
+				@endif
 				<div class="table-responsive cart_info">
 					<table class="table table-condensed">
 						<thead>
