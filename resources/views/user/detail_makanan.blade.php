@@ -37,10 +37,14 @@
 								<img src="images/product-details/rating.png" alt="" />
 								<span>
 									<span>Rp {{$makanan->harga}},-</span>
-									<a type="button" href="{{route('cart.add',$makanan->id)}}" class="btn btn-default cart">
-										<i class="fa fa-shopping-cart"></i>
-										Add to cart
-									</a>
+									@if ($makanan->stock == 0)
+										<h2><span>Sold Out</span></h2>
+									@else
+										<a type="button" href="{{route('cart.add',$makanan->id)}}" class="btn btn-default cart">
+											<i class="fa fa-shopping-cart"></i>
+											Add to cart
+										</a>
+									@endif
 								</span>
 								<p><b>Stock: </b>{{$makanan->stock}}</p>
 								<p><b>Category: </b>{{$makanan->category->nama}}</p>

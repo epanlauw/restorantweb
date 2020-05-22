@@ -34,5 +34,6 @@ Route::group(['middleware' => ['auth', 'is_user']], function() {
   Route::get('/add-cart/{minuman}','CartController@addMinuman')->name('add.cart');
   Route::get('/cart','CartController@index')->name('cart.index');
   Route::get('/cart/destroy/{itemId}','CartController@destroy')->name('cart.destroy');
-  Route::get('/cart/update/{itemId}','CartController@update')->name('cart.update');
+  Route::patch('/cart/update/{itemId}','CartController@update')->name('cart.update');
+  Route::get('/checkout','CartController@checkout');
 });

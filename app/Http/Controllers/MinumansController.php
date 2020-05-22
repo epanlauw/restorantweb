@@ -42,7 +42,7 @@ class MinumansController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+      {
         $request->validate([
             'nama' => 'required',
             'stock' => 'required',

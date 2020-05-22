@@ -36,7 +36,7 @@ class TransaksisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
