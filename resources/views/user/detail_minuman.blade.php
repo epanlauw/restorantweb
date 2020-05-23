@@ -1,7 +1,5 @@
 @extends('layouts.main')
-
-@section('title', 'Restore Toko Kita Semua')
-
+@section('title','{{$minuman->nama}}')
 @section('content')
 <section>
 		<div class="container">

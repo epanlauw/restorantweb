@@ -1,7 +1,5 @@
 @extends('layouts.main')
-
-@section('title', 'Restore Toko Kita Semua')
-
+@section('title','Cart')
 @section('content')
 	<section id="cart_items">
 			<div class="container">

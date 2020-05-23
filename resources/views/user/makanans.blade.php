@@ -1,6 +1,8 @@
 @extends('layouts.main')
-
-@section('title', 'Restore Toko Kita Semua')
+@section('title','List Makanan')
+@section('search')
+<input type="text" placeholder="Search" name="search" id="search" class="form-control"/>
+@endsection
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
