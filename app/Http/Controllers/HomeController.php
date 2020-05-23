@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Makanan;
 use App\Minuman;
-
+use App\Transaksi;
+use App\Rating;
 class HomeController extends Controller
 {
     /**
@@ -179,5 +180,17 @@ class HomeController extends Controller
     public function showMinuman(Minuman $minuman)
     {
         return view('user.detail_minuman',['minuman'=>$minuman]);
+    }
+
+    public function history()
+    {
+        $transaksis = Transaksi::all();
+        return view('user.history',['transaksis'=>$transaksis]);
+    }
+
+    public function rating()
+    {
+      $ratings = Rating::all();
+      return view('user.rating',['ratings' => $ratings]);
     }
 }

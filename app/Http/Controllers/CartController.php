@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Makanan;
 use App\Minuman;
 use App\Transaksi;
+use Carbon\Carbon;
 
 class CartController extends Controller
 {
@@ -69,10 +70,11 @@ class CartController extends Controller
         return back();
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {
+        $tgl_pesan = Carbon::now();
         if (\Cart::session(auth()->id())->isEmpty()) {
-            return back()->withErrors(['Cart cannot be empty!!']);
+            return redirect('/cart')->withErrors(['Cart cannot be empty!!']);
         }else{
             // $tgl_pesan = Carbon\Carbon::now();
             $cartItems = \Cart::session(auth()->id())->getContent();
@@ -81,12 +83,13 @@ class CartController extends Controller
                 Transaksi::create([
                     'customer_id' => auth()->id(),
                     'makanan_id' => $item->associatedModel->id,
-                    // 'rating_id' => $request->harga,
+                    'rating_id' => $request->rating,
                     'jml_makanan' => $item->quantity,
                     'jml_minuman' =>  0,
                     'total_harga' => \Cart::session(auth()->id())->get($item->id)->getPriceSum(),
                     'alamat' => auth()->user()->alamat,
-                    'kota' => auth()->user()->kota
+                    'kota' => auth()->user()->kota,
+                    'tgl_pesan' => $tgl_pesan->format("Y-m-d")
                 ]);
                 Makanan::where('id', $item->associatedModel->id)
                       ->update([
@@ -96,13 +99,13 @@ class CartController extends Controller
                 Transaksi::create([
                     'customer_id' => auth()->id(),
                     'minuman_id' => $item->associatedModel->id,
-                    // 'rating_id' => $request->harga,
+                    'rating_id' => $request->rating,
                     'jml_makanan' => 0,
                     'jml_minuman' =>  $item->quantity,
                     'total_harga' => \Cart::session(auth()->id())->get($item->id)->getPriceSum(),
                     'alamat' => auth()->user()->alamat,
                     'kota' => auth()->user()->kota,
-                    'tgl_pesan' => $tgl_pesan
+                    'tgl_pesan' => $tgl_pesan->format("Y-m-d")
                 ]);
                 Minuman::where('id', $item->associatedModel->id)
                       ->update([

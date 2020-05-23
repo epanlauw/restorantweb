@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth', 'is_admin']], function() {
 
 Route::group(['middleware' => ['auth', 'is_user']], function() {
   Route::get('/home', 'HomeController@userHome')->name('home');
+  Route::get('/history','HomeController@history');
 
   //makanan
   Route::get('/makanans','HomeController@makanan');
@@ -52,5 +53,6 @@ Route::group(['middleware' => ['auth', 'is_user']], function() {
   Route::get('/cart','CartController@index')->name('cart.index');
   Route::get('/cart/destroy/{itemId}','CartController@destroy')->name('cart.destroy');
   Route::patch('/cart/update/{itemId}','CartController@update')->name('cart.update');
-  Route::get('/checkout','CartController@checkout');
+  Route::post('/checkout','CartController@checkout');
+  Route::get('/rating','HomeController@rating');
 });

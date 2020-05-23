@@ -88,6 +88,7 @@
 											<p class="cart_total_price">Rp {{Cart::session(auth()->id())->get($item->id)->getPriceSum()}},-</p>
 										</td>
 										<td class="cart_delete">
+											<a class="cart_quantity_delete" href="{{route('cart.destroy',$item->id)}}"><i class="fa fa-times"></i></a>
 										</td>
 									</tr>
 								@endif
@@ -124,7 +125,7 @@
 								<li>Shipping Cost <span>Free</span></li>
 								<li>Total <span>Rp {{ Cart::session(auth()->id())->getTotal()}},-</span></li>
 							</ul>
-								<a class="btn btn-default check_out" href="{{url('/checkout')}}">Check Out</a>
+								<a class="btn btn-default check_out" href="{{url('/rating')}}">Check Out</a>
 						</div>
 					</div>
 				</div>

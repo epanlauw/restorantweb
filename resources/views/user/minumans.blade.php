@@ -88,7 +88,7 @@
 
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">Food List</h2>
+						<h2 class="title text-center">Drink List</h2>
 						@foreach ($minumans as $minuman)
 							<div class="col-sm-4 filter {{$minuman->category_id}}" data-price="{{$minuman->harga}}">
 									<div class="product-image-wrapper">
@@ -97,13 +97,13 @@
 												<img src="{{asset('images/minuman/'.$minuman->image)}}" alt="" height="300" />
 												<h2>Rp {{$minuman->harga}},-</h2>
 												<p>{{$minuman->nama}}</p>
-												<a href="{{url('/makanan/'.$minuman->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>View Details</a>
+												<a href="{{url('/minuman/'.$minuman->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>View Details</a>
 											</div>
 											<div class="product-overlay">
 												<div class="overlay-content">
 													<h2>Rp {{$minuman->harga}},-</h2>
 													<p>{{$minuman->nama}}</p>
-													<a href="{{url('/makanan/'.$minuman->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>View Details</a>
+													<a href="{{url('/minuman/'.$minuman->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>View Details</a>
 												</div>
 											</div>
 										</div>

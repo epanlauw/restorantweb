@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title','{{$makanan->nama}}')
+@section('title','Detail Makanan')
 @section('content')
 <section>
 		<div class="container">

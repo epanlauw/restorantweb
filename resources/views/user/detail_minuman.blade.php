@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title','{{$minuman->nama}}')
+@section('title',"Detail Minuman")
 @section('content')
 <section>
 		<div class="container">

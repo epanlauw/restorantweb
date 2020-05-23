@@ -122,7 +122,7 @@
   										<li><a href="{{URL::to('minumans')}}">Minuman</a></li>
                     </ul>
                 </li>
-								<li><a href="contact-us.html">Contact</a></li>
+								<li><a href="{{URL::to('history')}}">History</a></li>
 							</ul>
 						</div>
 					</div>
