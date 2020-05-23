@@ -119,7 +119,7 @@
 								<li class="dropdown"><a href="#">Produk<i class="fa fa-angle-down"></i></a>
                   <ul role="menu" class="sub-menu">
                       <li><a href="{{URL::to('makanans')}}">Makanan</a></li>
-  										<li><a href="#">Minuman</a></li>
+  										<li><a href="{{URL::to('minumans')}}">Minuman</a></li>
                     </ul>
                 </li>
 								<li><a href="contact-us.html">Contact</a></li>

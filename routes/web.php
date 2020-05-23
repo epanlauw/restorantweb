@@ -27,6 +27,8 @@ Route::group(['middleware' => ['auth', 'is_admin']], function() {
 
 Route::group(['middleware' => ['auth', 'is_user']], function() {
   Route::get('/home', 'HomeController@userHome')->name('home');
+
+  //makanan
   Route::get('/makanans','HomeController@makanan');
   Route::get('/makanans/nama-asc','HomeController@makananNameAsc');
   Route::get('/makanans/nama-desc','HomeController@makananNameDesc');
@@ -34,7 +36,17 @@ Route::group(['middleware' => ['auth', 'is_user']], function() {
   Route::get('/makanans/harga-desc','HomeController@makananPriceDesc');
   Route::post('/makanans/search','HomeController@makananSearch');
   Route::get('/makanan/{makanan}', 'HomeController@showMakanan');
+
+  //minuman
+  Route::get('/minumans','HomeController@minuman');
+  Route::get('/minumans/nama-asc','HomeController@minumanNameAsc');
+  Route::get('/minumans/nama-desc','HomeController@minumanNameDesc');
+  Route::get('/minumans/harga-asc','HomeController@minumanPriceAsc');
+  Route::get('/minumans/harga-desc','HomeController@minumanPriceDesc');
+  Route::post('/minumans/search','HomeController@minumanSearch');
   Route::get('/minuman/{minuman}', 'HomeController@showMinuman');
+
+  //cart
   Route::get('/add-to-cart/{makanan}','CartController@addMakanan')->name('cart.add');
   Route::get('/add-cart/{minuman}','CartController@addMinuman')->name('add.cart');
   Route::get('/cart','CartController@index')->name('cart.index');

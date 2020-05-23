@@ -43,6 +43,7 @@ class HomeController extends Controller
         ]);
     }
 
+//makanan
     public function makanan()
     {
       $makanans = Makanan::paginate(6);
@@ -109,6 +110,70 @@ class HomeController extends Controller
     public function showMakanan(Makanan $makanan)
     {
         return view('user.detail_makanan',['makanan'=>$makanan]);
+    }
+
+//minuman
+    public function minuman()
+    {
+      $minumans = Minuman::paginate(6);
+      $links = $minumans->links();
+      return view('user.minumans',[
+        'minumans' => $minumans,
+        'links' => $links,
+      ]);
+    }
+
+    public function minumanNameAsc()
+    {
+      $minumans = Minuman::orderBy('nama', 'asc')->paginate(6);
+      $links = $minumans->appends(['sort' => 'nama'])->links();
+      return view('user.minumans',[
+        'minumans' => $minumans,
+        'links' => $links,
+      ]);
+    }
+
+    public function minumanNameDesc()
+    {
+      $minumans = Minuman::orderBy('nama', 'desc')->paginate(6);
+      $links = $minumans->appends(['sort' => 'nama'])->links();
+      return view('user.minumans',[
+        'minumans' => $minumans,
+        'links' => $links,
+      ]);
+    }
+
+    public function minumanPriceAsc()
+    {
+      $minumans = Minuman::orderBy('harga', 'asc')->paginate(6);
+      $links = $minumans->appends(['sort' => 'harga'])->links();
+      return view('user.minumans',[
+        'minumans' => $minumans,
+        'links' => $links,
+      ]);
+    }
+
+    public function minumanPriceDesc()
+    {
+      $minumans = Minuman::orderBy('harga', 'desc')->paginate(6);
+      $links = $minumans->appends(['sort' => 'harga'])->links();
+      return view('user.minumans',[
+        'minumans' => $minumans,
+        'links' => $links,
+      ]);
+    }
+
+    public function minumanSearch(Request $request)
+    {
+      if ($request->search == '') {
+        return back();
+      }else{
+        $searchs = Minuman::where('nama','like','%'.$request->search.'%')->get();
+        return view('user.minumans',[
+          'minumans' => $searchs,
+          'links' => '',
+        ]);
+      }
     }
 
     public function showMinuman(Minuman $minuman)
