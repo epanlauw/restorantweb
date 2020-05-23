@@ -7,6 +7,7 @@ use App\Makanan;
 use App\Minuman;
 use App\Transaksi;
 use App\Rating;
+use App\User;
 class HomeController extends Controller
 {
     /**
@@ -192,5 +193,58 @@ class HomeController extends Controller
     {
       $ratings = Rating::all();
       return view('user.rating',['ratings' => $ratings]);
+    }
+
+    //user
+    public function profile()
+    {
+      return view('user.profile');
+    }
+    public function editProfile()
+    {
+      return view('user.edit-profile');
+    }
+    public function updateProfile(Request $request)
+    {
+      if($request->hasFile('image')){
+          $request->validate([
+            'first_name' => ['required', 'string', 'max:255'],
+            'alamat' => ['required', 'string', 'max:255'],
+            'no_tlp' => ['required', 'string', 'max:12'],
+            'bod' => ['required','date','before:today','after:1900-01-01'],
+            'image' => ['image','mimes:jpg,png,jpeg'],
+          ]);
+          $file_extention = $request->image->getClientOriginalExtension();
+          $file_name = time().rand(100000,1001238912).'image_profile.'.$file_extention;
+          $request->image->move(public_path().'/users/image',$file_name);
+          User::where('id',auth()->id())
+            ->update([
+              'first_name' => $request->first_name,
+              'last_name' => $request->last_name,
+              'alamat' => $request->alamat,
+              'kota' => $request->kota,
+              'no_tlp' => $request->no_tlp,
+              'bod' => $request->bod,
+              'image' => $file_name,
+            ]);
+      }else{
+        $request->validate([
+          'first_name' => ['required', 'string', 'max:255'],
+          'alamat' => ['required', 'string', 'max:255'],
+          'no_tlp' => ['required', 'string', 'max:12'],
+          'bod' => ['required','date','before:today','after:1900-01-01'],
+        ]);
+        User::where('id',auth()->id())
+          ->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'alamat' => $request->alamat,
+            'kota' => $request->kota,
+            'no_tlp' => $request->no_tlp,
+            'bod' => $request->bod,
+          ]);
+        dump($request);
+      }
+      return redirect('/profile/'.auth()->id());
     }
 }

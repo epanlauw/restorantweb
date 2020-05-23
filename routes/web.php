@@ -29,6 +29,10 @@ Route::group(['middleware' => ['auth', 'is_user']], function() {
   Route::get('/home', 'HomeController@userHome')->name('home');
   Route::get('/history','HomeController@history');
 
+  //user
+  Route::get('/profile/{user_id}','HomeController@profile');
+  Route::get('/profile/edit/{user_id}','HomeController@editProfile');
+  Route::patch('/profile/update','HomeController@updateProfile');
   //makanan
   Route::get('/makanans','HomeController@makanan');
   Route::get('/makanans/nama-asc','HomeController@makananNameAsc');

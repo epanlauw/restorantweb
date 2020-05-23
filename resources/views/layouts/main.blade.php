@@ -66,7 +66,7 @@
 							<ul class="nav navbar-nav">
                 @guest
                 @else
-                  	<li><a href="#"><i class="fa fa-user"></i> {{auth()->user()->first_name . ' '. auth()->user()->last_name}}</a></li>
+                  	<li><a href="{{url('/profile/'.auth()->id())}}"><i class="fa fa-user"></i> {{auth()->user()->first_name . ' '. auth()->user()->last_name}}</a></li>
                     <li><a href="{{url('/cart')}}"><i class="fa fa-shopping-cart"></i> Cart <div class="badge btn-danger">{{Cart::session(auth()->id())->getTotalQuantity()}}</div></a></li>
                 @endguest
 								 <!-- Authentication Links -->
