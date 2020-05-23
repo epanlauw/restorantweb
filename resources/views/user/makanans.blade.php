@@ -1,7 +1,12 @@
 @extends('layouts.main')
 @section('title','List Makanan')
 @section('search')
-<input type="text" placeholder="Search" name="search" id="search" class="form-control"/>
+<form action="{{url('makanans/search')}}" method="post">
+	@csrf
+	<div class="input-group">
+    <input type="text" placeholder="Search" name="search" id="search" class="form-control"/>
+  </div>
+</form>
 @endsection
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth', 'is_user']], function() {
   Route::get('/makanans/nama-desc','HomeController@makananNameDesc');
   Route::get('/makanans/harga-asc','HomeController@makananPriceAsc');
   Route::get('/makanans/harga-desc','HomeController@makananPriceDesc');
+  Route::post('/makanans/search','HomeController@makananSearch');
   Route::get('/makanan/{makanan}', 'HomeController@showMakanan');
   Route::get('/minuman/{minuman}', 'HomeController@showMinuman');
   Route::get('/add-to-cart/{makanan}','CartController@addMakanan')->name('cart.add');

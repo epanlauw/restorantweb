@@ -93,6 +93,19 @@ class HomeController extends Controller
       ]);
     }
 
+    public function makananSearch(Request $request)
+    {
+      if ($request->search == '') {
+        return back();
+      }else{
+        $searchs = Makanan::where('nama','like','%'.$request->search.'%')->get();
+        return view('user.makanans',[
+          'makanans' => $searchs,
+          'links' => '',
+        ]);
+      }
+    }
+
     public function showMakanan(Makanan $makanan)
     {
         return view('user.detail_makanan',['makanan'=>$makanan]);
