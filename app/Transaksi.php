@@ -17,4 +17,12 @@ class Transaksi extends Model
   public function minuman(){
     return $this->belongsTo(\App\Minuman::class, 'minuman_id');
   }
+
+  public function rating(){
+    return $this->belongsTo(\App\Rating::class, 'rating_id');
+  }
+
+  public function customer(){
+    return $this->belongsTo(\App\User::class, 'customer_id');
+  }
 }

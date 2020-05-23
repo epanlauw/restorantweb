@@ -26,11 +26,14 @@
                                       <th>Sub Total</th>
                                 </tr>
                               </thead>
+                              @php
+                                $i=1;
+                              @endphp
                               <tbody>
                                 @foreach($transaksis as $transaksi)
                                 @if ($transaksi->customer_id == auth()->id())
                                   <tr>
-                                        <th scope="row">{{$loop->iteration}}</th>
+                                        <th scope="row">{{$i}}</th>
                                         @if ($transaksi->makanan_id == '')
                                           <td>Tidak Ada</td>
                                         @else
@@ -49,6 +52,9 @@
                                         <td>{{$transaksi->kota}}</td>
                                         <td>Rp {{$transaksi->total_harga}},-</td>
                                   </tr>
+                                  @php
+                                    $i++;
+                                  @endphp
                                 @endif
                               @endforeach
                               </tbody>

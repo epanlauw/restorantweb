@@ -1,5 +1,10 @@
 <section id="slider"><!--slider-->
     <div class="container">
+      @if($errors->any())
+        <div class="alert alert-success">
+          <h4>{{$errors->first()}}</h4>
+      </div>
+      @endif
         <div class="row">
             <div class="col-sm-12">
                 <div id="slider-carousel" class="carousel slide" data-ride="carousel">

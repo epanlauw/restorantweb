@@ -24,37 +24,35 @@
                                     <th>Rating</th>
                                     <th>Total Harga</th>
                                     <th>Tanggal Pesan</th>
-                                    <th>Tanggal Kirim</th>
                                     <th>Alamat</th>
                                     <th>Kota</th>
                               </tr>
                                 </tr>
                             </thead>
                             <tbody>
-                              {{-- @foreach($makanans as $makanan)
+                              @foreach($transaksis as $transaksi)
                               <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
-                                    <td>{{$makanan->nama}}</td>
-                                    <td>{{$makanan->stock}}</td>
-                                    <td>{{$makanan->harga}}</td>
-                                    <td>{{$makanan->category->nama}}</td>
-                                    <td>{{$makanan->supplier->nama}}</td>
-                                    <td>
-                                        <center><img src="{{ ('../images/makanan/'.$makanan->image) }}" width="200"></center>
-                                    </td>
-                                    <td>
-                                        <form action="{{"makanans/".$makanan->id}}" method="post" class="d-inline">
-                                        @method('delete')
-                                        @csrf
-                                        <div class="btn-group">
-                                            <a class="btn btn-info" href="{{url('/admin/makanans/'.$makanan->id).'/edit'}}"><i class="fa fa-edit"></i></a>
-                                            <a class="btn btn-success" href="{{url('/admin/makanans/'.$makanan->id)}}"><i class="fa fa-eye"></i></a>
-                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                                        </div>
-                                        </form>
-                                    </td>
+                                    <td>{{$transaksi->customer->first_name. ' '.$transaksi->customer->last_name}}</td>
+                                    @if ($transaksi->makanan_id == '')
+                                      <td>Tidak Ada</td>
+                                    @else
+                                      <td>{{$transaksi->makanan->nama}}</td>
+                                    @endif
+                                    <td>{{$transaksi->jml_makanan}}</td>
+                                    @if ($transaksi->minuman_id == '')
+                                      <td>Tidak Ada</td>
+                                    @else
+                                      <td>{{$transaksi->minuman->nama}}</td>
+                                    @endif
+                                    <td>{{$transaksi->jml_minuman}}</td>
+                                    <td>{{$transaksi->rating->nama}}</td>
+                                    <td>Rp {{$transaksi->total_harga}},-</td>
+                                    <td>{{$transaksi->tgl_pesan}}</td>
+                                    <td>{{$transaksi->alamat}}</td>
+                                    <td>{{$transaksi->kota}}</td>
                                 </tr>
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

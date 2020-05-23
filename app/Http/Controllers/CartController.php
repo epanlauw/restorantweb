@@ -114,7 +114,7 @@ class CartController extends Controller
               }
             }
             \Cart::session(auth()->id())->clear();
-            return redirect('/home');
+            return redirect('/home')->withErrors(['Pembelian Berhasil']);
         }
 
     }
