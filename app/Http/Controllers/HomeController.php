@@ -13,10 +13,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-
-    }
+    // public function __construct()
+    // {
+    //
+    // }
 
     /**
      * Show the application dashboard.
@@ -46,7 +46,51 @@ class HomeController extends Controller
     public function makanan()
     {
       $makanans = Makanan::paginate(6);
-      return view('user.makanans',['makanans' => $makanans]);
+      $links = $makanans->links();
+      return view('user.makanans',[
+        'makanans' => $makanans,
+        'links' => $links,
+      ]);
+    }
+
+    public function makananNameAsc()
+    {
+      $makanans = Makanan::orderBy('nama', 'asc')->paginate(6);
+      $links = $makanans->appends(['sort' => 'nama'])->links();
+      return view('user.makanans',[
+        'makanans' => $makanans,
+        'links' => $links,
+      ]);
+    }
+
+    public function makananNameDesc()
+    {
+      $makanans = Makanan::orderBy('nama', 'desc')->paginate(6);
+      $links = $makanans->appends(['sort' => 'nama'])->links();
+      return view('user.makanans',[
+        'makanans' => $makanans,
+        'links' => $links,
+      ]);
+    }
+
+    public function makananPriceAsc()
+    {
+      $makanans = Makanan::orderBy('harga', 'asc')->paginate(6);
+      $links = $makanans->appends(['sort' => 'harga'])->links();
+      return view('user.makanans',[
+        'makanans' => $makanans,
+        'links' => $links,
+      ]);
+    }
+
+    public function makananPriceDesc()
+    {
+      $makanans = Makanan::orderBy('harga', 'desc')->paginate(6);
+      $links = $makanans->appends(['sort' => 'harga'])->links();
+      return view('user.makanans',[
+        'makanans' => $makanans,
+        'links' => $links,
+      ]);
     }
 
     public function showMakanan(Makanan $makanan)

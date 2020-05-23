@@ -28,6 +28,10 @@ Route::group(['middleware' => ['auth', 'is_admin']], function() {
 Route::group(['middleware' => ['auth', 'is_user']], function() {
   Route::get('/home', 'HomeController@userHome')->name('home');
   Route::get('/makanans','HomeController@makanan');
+  Route::get('/makanans/nama-asc','HomeController@makananNameAsc');
+  Route::get('/makanans/nama-desc','HomeController@makananNameDesc');
+  Route::get('/makanans/harga-asc','HomeController@makananPriceAsc');
+  Route::get('/makanans/harga-desc','HomeController@makananPriceDesc');
   Route::get('/makanan/{makanan}', 'HomeController@showMakanan');
   Route::get('/minuman/{minuman}', 'HomeController@showMinuman');
   Route::get('/add-to-cart/{makanan}','CartController@addMakanan')->name('cart.add');
